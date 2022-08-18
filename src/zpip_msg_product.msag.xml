@@ -68,6 +68,12 @@
      <MSGNR>010</MSGNR>
      <TEXT>Business partner &amp;1 is absent in the database.</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>&amp;1: &amp;2.</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

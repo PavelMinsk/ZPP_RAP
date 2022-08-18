@@ -85,5 +85,6 @@ define root view entity zpip_c_product
       _Market : redirected to composition child zpip_c_market,
       _ProdGroup,
       _Phases,
-      _UOM
+      _UOM,
+      _MarketChart
 }

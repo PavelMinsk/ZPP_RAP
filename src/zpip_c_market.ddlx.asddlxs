@@ -57,20 +57,20 @@ annotate view zpip_c_market
                  targetElement:      '_MarketOrder'
               },
               {  id:                 'ChartOrderQuantity',
-                 targetQualifier:    'OrdersQuantity',
-                 targetElement:      '_OrderChart',
                  purpose:            #STANDARD,
                  type:               #CHART_REFERENCE,
                  label:              'Orders Quantity',
-                 position:            25
+                 position:            25,
+                 targetQualifier:    'OrdersQuantity',
+                 targetElement:      '_MarketOrder'
               },
               {  id:                 'ChartOrderAmounts',
                  purpose:            #STANDARD,
-                 targetQualifier:    'OrdersAmounts',
-                 targetElement:      '_OrderChart',
                  type:               #CHART_REFERENCE,
                  label:              'Orders Amounts',
-                 position:            27
+                 position:            27,
+                 targetQualifier:    'OrdersAmounts',
+                 targetElement:      '_MarketOrder'
               },
               {
                  id:                 'AdminDataCollection',
@@ -99,6 +99,15 @@ annotate view zpip_c_market
                  position:          20,
                  targetQualifier:   'MarketCharacteristics'
               },
+//              {
+//                 id:                'FinanceCharacteristics',
+//                 purpose:           #STANDARD ,
+//                 parentId:          'GeneralInformation',
+//                 type:              #FIELDGROUP_REFERENCE,
+//                 label:             'Finance Characteristics',
+//                 position:          30,
+//                 targetQualifier:   'FinanceCharacteristics'
+//              },
               {     
                  id:                'AdminData',     
                  purpose:           #STANDARD ,     
@@ -192,38 +201,45 @@ annotate view zpip_c_market
       Enddate;
       
       @UI: { 
-            lineItem:       [ { position: 71, importance: #MEDIUM  } ]   
+            lineItem:       [ { position: 71, importance: #MEDIUM  } ] //,
+            //fieldGroup:     [ { position: 10, qualifier: 'FinanceCharacteristics' }]   
           }
       ItemQuantity;
       
       @UI: { 
-            lineItem:       [ { position: 72, importance: #MEDIUM  } ]    
-           }
+            lineItem:       [ { position: 72, importance: #MEDIUM  } ] //,
+            //fieldGroup:     [ { position: 20, qualifier: 'FinanceCharacteristics' }]   
+          }
       MarketNetamoun;  
       
       @UI: { 
-            lineItem:       [ { position: 73, importance: #MEDIUM  } ]    
-           }
+            lineItem:       [ { position: 73, importance: #MEDIUM  } ] //,
+            //fieldGroup:     [ { position: 30, qualifier: 'FinanceCharacteristics' }]   
+          }
       MarketGrossamount;
      
 ----------------------------      
       
      @UI: { 
+            //lineItem:       [ { position: 80, importance: #LOW  } ],
             fieldGroup:     [ { position: 10, qualifier: 'AdminData' }]  
           }
       CreatedBy;
       
      @UI: { 
+            //lineItem:       [ { position: 90, importance: #LOW  } ],
             fieldGroup:     [ { position: 20, qualifier: 'AdminData' }]  
           }
       CreationTime;
       
      @UI: { 
+            //lineItem:       [ { position: 100, importance: #LOW  } ],
             fieldGroup:     [ { position:  30, qualifier: 'AdminData' }]  
           }
       ChangedBy;
       
      @UI: { 
+            //lineItem:       [ { position: 110, importance: #LOW  } ],
             fieldGroup:     [ { position:  40, qualifier: 'AdminData' }]  
           }
       ChangeTime ;

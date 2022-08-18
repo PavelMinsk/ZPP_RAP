@@ -6,11 +6,11 @@ define root view entity zpip_i_product
 
   composition [0..*] of zpip_i_market  as _Market
 
-  association [0..1] to zpip_i_prod_gr            as _ProdGroup on $projection.Pgid    = _ProdGroup.Pgid
-  association [0..1] to zpip_d_phase              as _Phases    on $projection.Phaseid = _Phases.phaseid
-  association [0..1] to zpip_d_uom                as _UOM       on $projection.SizeUom = _UOM.msehi
+  association [0..1] to zpip_i_prod_gr            as _ProdGroup        on $projection.Pgid    = _ProdGroup.Pgid
+  association [0..1] to zpip_d_phase              as _Phases           on $projection.Phaseid = _Phases.phaseid
+  association [0..1] to zpip_d_uom                as _UOM              on $projection.SizeUom = _UOM.msehi
   association [0..1] to zpip_c_market_order_count as _MarketOrderCount on $projection.ProdUuid = _MarketOrderCount.ProdUuid
-
+  association [0..*] to zpip_i_market_ch          as _MarketChart      on $projection.ProdUuid = _MarketChart.ProdUuid 
 
 {
   key prod_uuid         as ProdUuid,
@@ -19,10 +19,15 @@ define root view entity zpip_i_product
       _ProdGroup.Pgname as Pgname, 
       phaseid           as Phaseid,
       case phaseid
-        when 1 then 1
-        when 2 then 2
-        when 3 then 3
-        when 4 then 4
+        when 1 
+          then 1
+        when 2 
+          then 2
+        when 3 
+          then 3
+        when 4 
+          then 4
+          else 0
       end               as PhaseCriticality,
           
       height            as Height, 
@@ -77,5 +82,6 @@ define root view entity zpip_i_product
       _Market,
       _ProdGroup,
       _Phases,
-      _UOM
+      _UOM,
+      _MarketChart
 }

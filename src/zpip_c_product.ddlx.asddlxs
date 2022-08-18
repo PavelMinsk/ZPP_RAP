@@ -78,7 +78,7 @@ annotate view zpip_c_product with
                  label:              'Items Quantity',
                  position:            23,
                  targetQualifier:    'MarketQuantity',
-                 targetElement:      '_Market'
+                 targetElement:      '_MarketChart'
               },
               {  id:                 'ChartMarketAmounts',
                  purpose:            #STANDARD,
@@ -86,7 +86,7 @@ annotate view zpip_c_product with
                  label:              'Total Amounts',
                  position:            25,
                  targetQualifier:    'MarketAmounts',
-                 targetElement:      '_Market'
+                 targetElement:      '_MarketChart'
               },
               {
                  id:                 'AdminDataCollection',
@@ -155,6 +155,12 @@ annotate view zpip_c_product with
                     type: #FOR_ACTION, 
                     position: 20, 
                     dataAction: 'changePhase'
+                  },
+                  { 
+                    label: 'Translate', 
+                    type: #FOR_ACTION, 
+                    position: 30, 
+                    dataAction: 'getProductTransl'
                   }
                  ]
       }

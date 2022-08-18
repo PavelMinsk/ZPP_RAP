@@ -31,17 +31,14 @@ define view entity zpip_i_market_ch
   as select from zpip_i_market
 {
   key ProdUuid,
-  key MrktUuid,
       @ObjectModel.text.element: ['Country']
       Mrktid,
       _Country.Country,
       @Aggregation.default: #SUM
       ItemQuantity,
       @Aggregation.default: #SUM
-      @Semantics.amount.currencyCode: 'Amountcurr'
       MarketNetamoun,
       @Aggregation.default: #SUM
-      @Semantics.amount.currencyCode: 'Amountcurr'
       MarketGrossamount,
       Amountcurr
 }

@@ -8,8 +8,11 @@ define view entity zpip_i_market
 
   composition [0..*] of zpip_i_order          as _MarketOrder
 
-  association [1..1] to zpip_i_country        as _Country on $projection.Mrktid     = _Country.Mrktid
-  association [1..1] to zpip_i_order_aggr     as _OrderAggr on $projection.MrktUuid = _OrderAggr.MrktUuid
+  association [1..1] to zpip_i_country        as _Country    on $projection.Mrktid   = _Country.Mrktid
+  association [1..1] to zpip_i_order_aggr     as _OrderAggr  on $projection.MrktUuid = _OrderAggr.MrktUuid
+  association [1..1] to zpip_i_order_ch       as _OrderChart on $projection.ProdUuid = _OrderChart.ProdUuid and
+                                                                $projection.MrktUuid = _OrderChart.MrktUuid
+  
   
 
 {
@@ -44,7 +47,7 @@ define view entity zpip_i_market
       _Product ,
       _MarketOrder,
       _Country ,
-      _OrderAggr
-
+      _OrderAggr,
+      _OrderChart
 
 }
