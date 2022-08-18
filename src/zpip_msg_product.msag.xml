@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Messages for product</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Product Group &amp;1 does not exist! Choose the existing group from the list.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Product &amp;1 already added! Choose another one from the list.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Can not change to Phase &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>It is the last Phase!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Market &amp;1 does not exist!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Start date &amp;1 must be on or after system date!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Start date &amp;1 must not be after end date &amp;2!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>The market &amp;1 for this product already exists.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Delivery date must be between &amp;1 and &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZPIP_MSG_PRODUCT</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Business partner &amp;1 is absent in the database.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,14 @@
+@EndUserText.label: 'Service Definition: Market Order OVP'
+define service Zpip_ui_ovp_market_ord {
+  expose zpip_c_ovp_glob_filt_mark_ord as GlobalFilters;
+  expose zpip_c_ovp_cards_market_order as OVPCards;
+  expose zpip_i_ovp_market_order as BaseCDS;
+  expose zpip_i_ovp_product as Product;
+  expose zpip_i_ovp_prod_grp as ProdGr;
+  expose zpip_i_ovp_phase as Phase;
+  expose zpip_i_ovp_market as Market;
+  expose zpip_i_ovp_country as Country;
+  expose zpip_c_phase_vh as ValueHelpPhase;
+  expose zpip_c_prodgr_vh as ValueHelpProdGr;
+  expose zpip_c_country_vh as ValueHelpCountry;
+}

@@ -1,0 +1,181 @@
+managed;
+
+/*add for Draft*/
+with draft;
+/************************************************************/
+/*                    Product                               */
+
+define behavior for zpip_i_product alias Product
+implementation in class zbp_pip_i_product unique
+persistent table zpip_d_product
+/*add for Draft*/
+draft table zpip_d_product_d
+lock master
+/*add for Draft*/
+total etag LastChangedAt
+etag master ChangeTime
+
+{
+
+  field ( numbering : managed, readonly : update ) ProdUuid;
+  field ( readonly ) ChangedBy, ChangeTime, CreationTime, CreatedBy, PgnameTrans;
+  field ( mandatory ) Prodid, Pgid, Price, PriceCurrency;
+
+  create;
+  update;
+  delete;
+
+/*correct for Draft*/
+  association _Market { create ; with draft; }
+//  association _Market { create; }
+
+  determination SetFirstPhase on save { create; field Phaseid; }
+  determination setPgnameTranslation on save { field Pgname; field TransCode; }
+
+  validation validateProdGroup on save { create; field Pgid; }
+  validation validateProdDupl  on save { create; field Prodid; }
+
+/* add for Draft*/
+  draft determine action Prepare  {
+    validation validateProdGroup;
+    validation validateProdDupl;
+    validation Market~validateMarket;
+    validation Market~validateStartDate;
+    validation Market~validateEndDate;
+    validation Market~validateMarketDupl;
+    validation Order~validateDeliveryDate;
+  }
+
+  action ( features : instance ) copyProduct parameter zpip_a_product_id result [1] $self;
+  action changePhase result [1] $self;
+  action ( features : instance ) getProductTransl result [1] $self;
+
+  mapping for zpip_d_product
+  {
+    ProdUuid      = prod_uuid;
+    Prodid        = prodid;
+    Pgid          = pgid;
+    Phaseid       = phaseid;
+    Height        = height;
+    Depth         = depth;
+    Width         = width;
+    SizeUom       = size_uom;
+    Price         = price;
+    PriceCurrency = price_currency;
+    Taxrate       = taxrate;
+    CreatedBy     = created_by;
+    CreationTime  = creation_time;
+    ChangedBy     = changed_by;
+    ChangeTime    = change_time;
+    LastChangedAt = last_changed_at;
+    PgnameTrans   = pgname_trans;
+    TransCode     = trans_code;
+  }
+}
+
+/***************************************************************/
+/*                 Market                                      */
+
+define behavior for zpip_i_market alias Market
+implementation in class zpip_cl_bp_i_market unique
+persistent table zpip_d_market
+/* add for Draft*/
+draft table zpip_d_market_d
+lock dependent by _Product
+etag master ChangeTime
+
+{
+  mapping for zpip_d_market
+  {
+    ProdUuid     = prod_uuid;
+    MrktUuid     = mrkt_uuid;
+    Mrktid       = mrktid;
+    Status       = status;
+    Startdate    = startdate;
+    Enddate      = enddate;
+    ISOCode      = isocode;
+    CreatedBy    = created_by;
+    CreationTime = creation_time;
+    ChangedBy    = changed_by;
+    ChangeTime   = change_time;
+  }
+
+  field ( numbering : managed, readonly ) MrktUuid;
+  field ( readonly ) ProdUuid;
+  field ( readonly ) ISOCode, ChangedBy, ChangeTime, CreationTime, CreatedBy;
+  field ( mandatory ) Mrktid;
+  field ( features : instance ) Status;
+
+  update;
+  delete;
+
+/*correct for Draft*/
+  association _Product     { with draft; }
+//  association _Product { }
+
+/*correct for Draft*/
+  association _MarketOrder { create; with draft; }
+//  association _MarketOrder { create; }
+
+  determination set_iso_code    on save { create; update; field ISOCode; }
+
+  validation validateMarket     on save { create; field Mrktid; }
+  validation validateStartDate  on save { create; field Startdate; }
+  validation validateEndDate    on save { create; field Enddate; }
+  validation validateMarketDupl on save { create; field Mrktid; }
+
+  action ( features : instance ) confirmMarketStatus result [1] $self;
+
+}
+
+/***************************************************************/
+/*                 Order                                       */
+
+define behavior for zpip_i_order alias Order
+implementation in class zpip_cl_bp_i_order unique
+persistent table zpip_d_mrkt_ordr
+/* add for Draft*/
+draft table zpip_d_order_d
+lock dependent by _Product
+etag master ChangeTime
+
+{
+  mapping for zpip_d_mrkt_ordr
+  {
+    ProdUuid             = prod_uuid;
+    MrktUuid             = mrkt_uuid;
+    OrderUuid            = order_uuid;
+    Orderid              = orderid;
+    Quantity             = quantity;
+    CalendarYear         = calendar_year;
+    DeliveryDate         = delivery_date;
+    Netamount            = netamount;
+    Grossamount          = grossamount;
+    Amountcurr           = amountcurr;
+    BusinessPartner      = busspartner;
+    BusinessPartnerName  = busspartnername;
+    BusinessPartnerGroup = busspartnergroup;
+    CreatedBy            = created_by;
+    CreationTime         = creation_time;
+    ChangedBy            = changed_by;
+    ChangeTime           = change_time;
+  }
+
+  field ( numbering : managed, readonly ) OrderUuid;
+  field ( readonly ) ProdUuid, MrktUuid, Orderid;
+  field ( readonly ) ChangedBy, CalendarYear, Netamount, Grossamount, Amountcurr, ChangeTime, CreationTime, CreatedBy;
+  field ( mandatory ) Quantity, DeliveryDate;
+
+  update;
+  delete;
+
+/*correct for Draft*/
+  association _Product { with draft; }
+//  association _Product { }
+
+  determination calculateOrderID  on modify { create; }
+  determination calculateAmounts  on save { field DeliveryDate, Netamount, Grossamount, Amountcurr, CalendarYear, Quantity; }
+
+  validation validateDeliveryDate    on save { create; field DeliveryDate; }
+  validation validateBusinessPartner on save { create; update; field BusinessPartner; }
+}

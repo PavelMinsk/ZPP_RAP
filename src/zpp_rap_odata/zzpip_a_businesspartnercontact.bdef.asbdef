@@ -1,0 +1,7 @@
+ implementation abstract;
+ define behavior for ZZPIP_A_BUSINESSPARTNERCONTACT
+  {
+  create;
+ update;
+ delete;
+ }

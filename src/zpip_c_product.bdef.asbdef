@@ -1,0 +1,60 @@
+projection;
+/*add for Draft*/
+use draft;
+/********************************************************/
+/*                      Product                         */
+define behavior for zpip_c_product alias Product
+/*disable for Draft*/
+use etag
+
+{
+  field ( readonly ) Phaseid;
+
+  use create;
+  use update;
+  use delete;
+
+/*correct for Draft*/
+  use association _Market { create; with draft; }
+//  use association _Market { create; }
+
+  use action copyProduct;
+  use action changePhase;
+  use action getProductTransl;
+}
+/********************************************************/
+/*                      Market                          */
+define behavior for zpip_c_market alias Market
+/*disable for Draft*/
+use etag
+
+{
+  use update;
+  use delete;
+
+
+  field ( readonly ) Status;
+
+/*correct for Draft*/
+  use association _Product     { with draft; }
+//  use association _Product     {  }
+/*correct for Draft*/
+  use association _MarketOrder { create; with draft; }
+//  use association _MarketOrder { create; }
+
+  use action confirmMarketStatus;
+}
+/********************************************************/
+/*                      Order                           */
+define behavior for zpip_c_order alias Order
+/*disable for Draft*/
+use etag
+
+{
+  use update;
+  use delete;
+
+/*correct for Draft*/
+  use association _Product { with draft; }
+//  use association _Product {  }
+}

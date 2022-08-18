@@ -1,0 +1,16 @@
+@EndUserText.label: 'Service Definition for Product'
+define service Zpip_sd_product {
+  expose zpip_c_product as Product;
+  expose zpip_c_market as Market;
+  expose zpip_c_order as MarketOrder;
+  expose zpip_i_prod_gr as ProdGroup;
+  expose zpip_i_phase as Phase;
+  expose zpip_i_UOM as UOM;
+  expose zpip_i_country as Country;
+  expose zpip_c_prodgr_vh as ProdgrVH;
+  expose zpip_c_phase_vh as PhaseVH;
+  expose zpip_c_country_vh as CountryVH;
+  expose zpip_i_order_aggr as OrderAggr;
+  expose zpip_i_order_ch as OrderChart;
+  expose zpip_i_market_ch as MarketChart;
+}

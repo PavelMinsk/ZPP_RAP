@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Order'
+define service Zpip_sd_order {
+  expose zpip_c_order as MarketOrder;
+  expose zpip_i_business_partner_c as CustomEntBP;
+}

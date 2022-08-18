@@ -1,0 +1,4 @@
+@EndUserText.label: 'Serv Definition for Market'
+define service Zpip_sd_market {
+  expose zpip_c_market as Market;
+}

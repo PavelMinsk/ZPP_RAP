@@ -1,0 +1,197 @@
+@Metadata.layer: #CORE
+
+@UI: { 
+       headerInfo: { 
+                     title:        { label: 'Product',
+                                     type:   #STANDARD,          
+                                     value: 'Orderid'   },           
+                     
+                     description:  { value: 'ProductName',
+                                     type: #STANDARD    },
+
+                     typeName:       'Order',
+                     typeNamePlural: 'Orders'
+                   },
+       
+       presentationVariant: [{ 
+                               sortOrder: [ { by: 'Orderid',  direction: #ASC } ] 
+                            }]                            
+     }
+     
+annotate view zpip_c_order with
+{
+  @UI.facet: [
+---------------------------------------------------------------------
+//                       Header Facet Annotations                        
+              {
+                 id:              'HeaderGrossamount',
+                 purpose:          #HEADER,
+                 type:             #DATAPOINT_REFERENCE,
+                 targetQualifier: 'Grossamount',
+                 position: 20
+              },
+                            
+---------------------------------------------------------------------            
+//                       Object Page Tabs                                               
+              {
+                 id:                 'GeneralInformation',
+                 type:               #COLLECTION,
+                 label:              'General Information',
+                 position:           10
+              },
+              {
+                 id:                 'BusinessPartnerTab',
+                 type:               #COLLECTION,
+                 label:              'Business Partner',
+                 position:           15
+              },
+              {
+                 id:                 'AdminDataCollection',
+                 type:               #COLLECTION,
+                 label:              'Admin Data',
+                 position:           20
+              },
+ --------------------------------------------------------------------             
+//                      Field Groups              
+              
+              {
+                 id:                'BasicData',
+                 purpose:           #STANDARD ,
+                 parentId:          'GeneralInformation',
+                 type:              #FIELDGROUP_REFERENCE,
+                 label:             'Basic Data',
+                 position:          10,
+                 targetQualifier:   'BasicData'
+              },
+              {
+                 id:                'BusinessPartner',
+                 purpose:           #STANDARD ,
+                 parentId:          'BusinessPartnerTab',
+                 type:              #FIELDGROUP_REFERENCE,
+                 label:             'Business Partner',
+                 position:          20,
+                 targetQualifier:   'BusinessPartner'
+              },
+              {     
+                 id:                'AdminData',     
+                 purpose:           #STANDARD ,     
+                 parentId:          'AdminDataCollection',     
+                 type:              #FIELDGROUP_REFERENCE,     
+                 label:             'Admin Data',     
+                 position:          10,     
+                 targetQualifier:   'AdminData'     
+              } 
+             ]     
+ --------------------------------------------------------------------   
+//Hidden
+ 
+  @UI: { hidden: true }
+  ProdUuid;
+  @UI: { hidden: true }
+  MrktUuid;
+  @UI: { hidden: true }
+  OrderUuid;
+-----------------------------  
+ // BasicData  
+  
+    @UI: { 
+         lineItem:       [ { position: 5, importance: #HIGH } ],
+         fieldGroup:     [ { position: 5, qualifier: 'BasicData' }],  
+         identification: [ { position: 5, label: 'Product Name' }]
+       } 
+  ProductName;
+  
+  @UI: { 
+         lineItem:       [ { position: 10, importance: #HIGH } ],
+         fieldGroup:     [ { position: 10, qualifier: 'BasicData' }],  
+         selectionField: [ { position: 10 } ],
+         identification: [ { position: 10, label: 'Order' }]
+       }  
+  @EndUserText.label: 'Order ID'
+  Orderid;
+  
+  @UI: { 
+         lineItem:       [ { position: 20, importance: #HIGH  } ],
+         fieldGroup:     [ { position: 20, qualifier: 'BasicData' } ]  
+       }   
+  Quantity;
+  
+  @UI: { 
+         lineItem:       [ { position: 30, importance: #HIGH  } ],
+         fieldGroup:     [ { position: 30, qualifier: 'BasicData' } ]  
+       }   
+  CalendarYear;
+  
+  @UI: { 
+         lineItem:       [ { position: 40, importance: #HIGH  } ],
+         fieldGroup:     [ { position: 40, qualifier: 'BasicData' } ]  
+       }   
+  DeliveryDate;
+  
+  @UI: { 
+         lineItem:       [ { position: 50, importance: #HIGH  } ],
+         fieldGroup:     [ { position: 50, qualifier: 'BasicData' } ]  
+       }   
+  Netamount;
+  
+  @UI: { 
+         lineItem:       [ { position: 60,    importance: #HIGH  } ],
+         fieldGroup:     [ { position: 60,    qualifier: 'BasicData' }],  
+         dataPoint:      { title: 'Gross amount', qualifier: 'Grossamount' }
+       } 
+  Grossamount;
+  
+  @UI: { 
+         lineItem:       [ { position: 70,    importance: #HIGH  } ],
+         fieldGroup:     [ { position: 70,    qualifier: 'BasicData' }]
+       } 
+  Amountcurr;
+-----------------------------
+//BusinessPartner
+  
+  @UI: { 
+         lineItem:       [ { position: 71,    importance: #HIGH  } ],
+         selectionField: [ { position: 20 } ],
+         fieldGroup:     [ { position: 10,    qualifier: 'BusinessPartner' }]
+       }
+  BusinessPartner;
+
+  @UI: { 
+         lineItem:       [ { position: 72,    importance: #HIGH  } ],
+         fieldGroup:     [ { position: 20,    qualifier: 'BusinessPartner' }]
+       }
+  businesspartnername;
+  
+  @UI: { 
+         lineItem:       [ { position: 73,    importance: #HIGH  } ],
+         fieldGroup:     [ { position: 30,    qualifier: 'BusinessPartner' }]
+       }
+  BusinessPartnerGroup;
+  
+-----------------------------
+//AdminData  
+  
+  @UI: { 
+            lineItem:   [ { position: 80, importance: #LOW  } ],
+            fieldGroup: [ { position: 10, qualifier: 'AdminData' }]  
+       }
+  CreatedBy;
+  
+  @UI: { 
+            lineItem:   [ { position: 90, importance: #LOW  } ],
+            fieldGroup: [ { position: 20, qualifier: 'AdminData' }]  
+       }
+  CreationTime;
+  
+  @UI: { 
+            lineItem:   [ { position: 100, importance: #LOW  } ],
+            fieldGroup: [ { position:  30, qualifier: 'AdminData' }]  
+       }
+  ChangedBy;
+  
+  @UI: { 
+            lineItem:   [ { position: 110, importance: #LOW  } ],
+            fieldGroup: [ { position:  40, qualifier: 'AdminData' }]  
+       }
+  ChangeTime;
+}

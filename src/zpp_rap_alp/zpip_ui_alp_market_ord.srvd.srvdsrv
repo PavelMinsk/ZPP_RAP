@@ -1,0 +1,13 @@
+@EndUserText.label: 'Service Definition: Market Order ALP'
+define service Zpip_ui_alp_market_ord {
+  expose zpip_c_alp_market_order as ALPMarketOrder;
+  expose zpip_i_alp_market_order as BaseCDS;
+  expose zpip_i_alp_product as Product;
+  expose zpip_i_alp_prod_grp as ProdGr;
+  expose zpip_i_alp_phase as Phase;
+  expose zpip_i_alp_market as Market;
+  expose zpip_i_alp_country as Country;
+  expose zpip_c_phase_vh as ValueHelpPhase;
+  expose zpip_c_prodgr_vh as ValueHelpProdGr;
+  expose zpip_c_country_vh as ValueHelpCountry;
+}
