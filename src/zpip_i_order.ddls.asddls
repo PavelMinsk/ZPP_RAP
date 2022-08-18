@@ -37,6 +37,7 @@ define view entity zpip_i_order
       //local ETag field --> OData ETag
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       change_time      as ChangeTime,
+      1                as OrderCount,
 
       /*Associasions*/
       _Market,

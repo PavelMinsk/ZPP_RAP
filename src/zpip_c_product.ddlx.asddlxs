@@ -21,8 +21,8 @@
                                             { by: 'Phaseid', direction: #ASC } ]
                             }]                            
      }
+@UI.lineItem: [{criticality: 'ProductCriticality'}]
 
-// @UI.lineItem: [{criticality: 'GeneralLineCriticality'}]
 annotate view zpip_c_product with
 {
   @UI.facet: [

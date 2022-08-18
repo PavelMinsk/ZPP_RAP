@@ -49,13 +49,13 @@ define root view entity zpip_c_product
       @Semantics.unitOfMeasure: true
       @EndUserText.label: 'Units'
       SizeUom,
-      _UOM.isocode as DimName ,
+      _UOM.isocode as DimName,
       
       @Semantics.amount.currencyCode: 'PriceCurrency'
       Price,
 
       PriceCriticality,
-      
+      ProductCriticality,
       PhaseCriticality,
       
       @Consumption.valueHelpDefinition: [{ 

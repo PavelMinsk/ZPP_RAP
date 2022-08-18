@@ -38,6 +38,7 @@ define view entity zpip_i_market
       //local ETag field --> OData ETag
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       change_time                  as ChangeTime,
+      1                            as MarketCount,
  
       /* associations */
       _Product ,
