@@ -17,7 +17,9 @@ ENDCLASS.
 
 
 
-CLASS zpip_cl_ext_call IMPLEMENTATION.
+CLASS ZPIP_CL_EXT_CALL IMPLEMENTATION.
+
+
   METHOD get_translation.
     DATA: lv_url     TYPE string VALUE 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20220623T143041Z.0b3203c74622ca3f.08be8078712fc4e5394443ad7949c34c37ebc57c&lang=en-',
           lv_tr_code LIKE ip_trcode.
@@ -77,5 +79,4 @@ CLASS zpip_cl_ext_call IMPLEMENTATION.
     CATCH cx_web_http_client_error cx_http_dest_provider_error.
     ENDTRY.
   ENDMETHOD.
-
 ENDCLASS.
