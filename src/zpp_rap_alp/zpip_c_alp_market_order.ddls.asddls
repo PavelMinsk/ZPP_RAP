@@ -151,7 +151,7 @@
                           {
                             qualifier:     'MainChart',
                             sortOrder:     [{ by: 'Orderid', direction: #ASC }],
-                            groupBy:       [ 'ProductName', 'CountryName', 'Orderid' ],
+                            groupBy:       [ 'ProductName', 'CountryName' ],
                             visualizations:[
                                              { type:#AS_CHART,    qualifier: 'ChartMainChart' },
                                              { type:#AS_LINEITEM, qualifier: 'LineMainChart'}
@@ -327,7 +327,7 @@ define view zpip_c_alp_market_order
       CountryName2,
       @UI: {
              lineItem:       [{qualifier: 'LineMainChart', position: 40 }],
-             selectionField: [{ position: 40 }],
+//             selectionField: [{ position: 40 }],
              identification: [{ position: 40 }],
              fieldGroup:     [{ position: 40, qualifier: 'BasicData'}]
            }      

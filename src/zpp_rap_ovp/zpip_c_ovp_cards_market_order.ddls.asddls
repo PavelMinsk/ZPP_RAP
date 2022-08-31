@@ -17,7 +17,7 @@
                 //Tab1   by Country
               qualifier:             'OrdQuanByCountry',
               title:                 'By Countrys',
-              chartType:              #COLUMN,
+              chartType:              #LINE,
               dimensions:          [ 'CountryName'],
               measures:            [ 'CountByCountry'],
               dimensionAttributes: [{ dimension: 'CountryName',  role: #CATEGORY }],
@@ -173,7 +173,7 @@ define view zpip_c_ovp_cards_market_order
       @UI.dataPoint: {
                        qualifier:               'dpOrdQuanByCountry',
                        criticalityCalculation: { improvementDirection: #MAXIMIZE,
-                                                 toleranceRangeLowValue: 19, 
+                                                 toleranceRangeLowValue: 16, 
                                                  deviationRangeLowValue: 10 }
                      }
       @Aggregation.default: #SUM

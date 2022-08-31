@@ -1,7 +1,7 @@
 @AbapCatalog.sqlViewName: 'ZPIPPHASEVH'
 @AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
-@AccessControl.authorizationCheck: #CHECK
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Phase Value Help'
 
 @ObjectModel:{
