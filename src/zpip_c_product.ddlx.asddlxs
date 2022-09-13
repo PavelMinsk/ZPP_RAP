@@ -226,7 +226,7 @@ annotate view zpip_c_product with
   Width;
 
   @UI: { 
-       lineItem:       [ { position: 100 } ],
+//       lineItem:       [ { position: 100 } ],
        identification: [ { position: 100 } ] 
       }
   SizeUom;
@@ -254,13 +254,13 @@ annotate view zpip_c_product with
   Price;
   
   @UI: { 
-         lineItem:       [ { position: 110 } ],
+//         lineItem:       [ { position: 110 } ],
          identification: [ { position: 110 } ] 
        }
   PriceCurrency;
   
   @UI: { 
-         lineItem:       [ { position: 60 } ],
+         lineItem:       [ { position: 26 } ],
          identification: [ { position: 60 } ],
          dataPoint:      {
                            title:     'Tax Rate', 
